@@ -22,21 +22,42 @@ export default function LoginView({ onLoggedIn }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 360, margin: '48px auto' }}>
-      <h2>Login</h2>
-      <div>
-        <label>Usuario</label>
-        <input value={username} onChange={e=>setUsername(e.target.value)} placeholder="usuario" />
+    <div className="container" style={{maxWidth: 440}}>
+      <div className="card">
+        <h2 className="h2">Login</h2>
+
+        <div className="form">
+          <div>
+            <div className="label">Usuario</div>
+            <input
+              className="input"
+              value={username}
+              onChange={e=>setUsername(e.target.value)}
+              placeholder="usuario"
+            />
+          </div>
+
+          <div>
+            <div className="label">Contraseña</div>
+            <input
+              className="input"
+              type="password"
+              value={password}
+              onChange={e=>setPassword(e.target.value)}
+              placeholder="•••••••"
+            />
+          </div>
+
+          <div className="spacer" />
+
+          <div className="row" style={{gridTemplateColumns:'1fr 1fr'}}>
+            <button className="btn btn-primary" onClick={handleLogin}>Login</button>
+            <button className="btn btn-ghost" onClick={handleRegister}>Crear usuario</button>
+          </div>
+
+          {msg && <p style={{ color:'#a8b0c7', marginTop:6 }}>{msg}</p>}
+        </div>
       </div>
-      <div>
-        <label>Contraseña</label>
-        <input type="password" value={password} onChange={e=>setPassword(e.target.value)} placeholder="contraseña" />
-      </div>
-      <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-        <button onClick={handleLogin}>Login</button>
-        <button onClick={handleRegister}>Crear usuario</button>
-      </div>
-      {msg && <p style={{ marginTop: 8 }}>{msg}</p>}
     </div>
   );
 }

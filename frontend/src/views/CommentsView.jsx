@@ -21,26 +21,31 @@ export default function CommentsView({ user, onLogout }) {
   };
 
   return (
-    <div className="container" style={{ maxWidth: 640, margin: '24px auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <h2>Comentarios</h2>
-        <button onClick={onLogout}>Cerrar sesión</button>
-      </div>
+    <div className="container">
+      <div className="card">
+        <div className="header">
+          <h2 className="h2">Comentarios</h2>
+          <div className="actions">
+            <button className="btn btn-ghost btn-sm" onClick={load}>Actualizar</button>
+            <button className="btn btn-primary btn-sm" onClick={onLogout}>Cerrar sesión</button>
+          </div>
+        </div>
 
-      <div style={{ display: 'flex', gap: 8 }}>
-        <input
-          style={{ flex: 1 }}
-          value={texto}
-          onChange={e=>setTexto(e.target.value)}
-          placeholder="Escribe tu comentario"
-        />
-        <button onClick={handlePublish}>Publicar</button>
-        <button onClick={load}>Actualizar</button>
-      </div>
+        <div className="row-2">
+          <input
+            className="input"
+            value={texto}
+            onChange={e=>setTexto(e.target.value)}
+            placeholder="Escribe tu comentario"
+          />
+          <button className="btn btn-ghost" onClick={handlePublish}>Publicar</button>
+          <button className="btn" onClick={load}>Actualizar</button>
+        </div>
 
-      <ul style={{ marginTop: 16, listStyle: 'none', padding: 0 }}>
-        {list.map(c => <CommentItem key={c._id} c={c} />)}
-      </ul>
+        <ul className="list">
+          {list.map(c => <CommentItem key={c._id} c={c} />)}
+        </ul>
+      </div>
     </div>
   );
 }

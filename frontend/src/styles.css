@@ -1,0 +1,169 @@
+/* Fuente y colores base */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+:root{
+  --bg: #0b1020;
+  --bg-soft: #111831;
+  --card: #151c35;
+  --text: #e6e9f4;
+  --muted: #a8b0c7;
+  --primary: #6ea8fe;
+  --primary-600: #4e87f7;
+  --ring: 0 0 0 3px rgba(110,168,254,.25);
+  --border: #243055;
+  --success: #19c37d;
+}
+
+*{ box-sizing: border-box }
+
+html,body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(60% 40% at 50% -10%, rgba(110,168,254,.20), transparent 60%),
+    radial-gradient(70% 50% at 10% 110%, rgba(25,195,125,.12), transparent 60%),
+    var(--bg);
+}
+
+/* Contenedor */
+.container{
+  width: min(980px, 92%);
+  margin: 40px auto;
+}
+
+/* Tarjeta */
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25),
+    inset 0 1px 0 rgba(255,255,255,.03);
+}
+
+/* Títulos */
+.h2{
+  margin: 0 0 16px;
+  font-size: 26px;
+  letter-spacing: .2px;
+}
+
+/* Grid simple */
+.row{
+  display: grid;
+  gap: 12px;
+}
+.row-2{
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Inputs */
+.input{
+  width: 100%;
+  height: 44px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  outline: none;
+  transition: .15s ease;
+}
+.input::placeholder{ color: #8e96b5 }
+.input:focus{
+  border-color: var(--primary);
+  box-shadow: var(--ring);
+}
+
+/* Botones */
+.btn{
+  height: 42px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #1b2443;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s ease;
+}
+.btn:hover{ transform: translateY(-1px) }
+.btn:active{ transform: translateY(0) }
+
+.btn-primary{
+  background: linear-gradient(180deg, var(--primary), var(--primary-600));
+  border-color: transparent;
+  color: white;
+}
+.btn-ghost{
+  background: transparent;
+}
+
+/* Header con acciones */
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.actions{
+  display: flex;
+  gap: 10px;
+}
+
+/* Lista de comentarios */
+.list{
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+.item{
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+}
+.meta{
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.user{
+  font-weight: 700;
+}
+.time{
+  font-size: 12px;
+  color: var(--muted);
+}
+.text{
+  color: var(--text);
+  line-height: 1.45;
+}
+
+/* Form de login */
+.form{
+  display: grid;
+  gap: 10px;
+}
+.label{ font-size: 13px; color: var(--muted) }
+.spacer{ height: 8px }
+
+/* Botón pequeño */
+.btn-sm{
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+}
