@@ -16,6 +16,29 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/comments', commentRoutes);
 
+// --- RUTA DE SALUD DEL SERVIDOR ---
+app.get('/api/test', (req, res) => {
+  res.json({ ok: true, message: 'Servidor funcionando correctamente en Vercel 🚀' });
+});
+
+// --- RUTA PARA PROBAR CONEXIÓN A MONGODB ---
+app.get('/api/dbtest', async (req, res) => {
+  try {
+    // 0 = disconnected, 1 = connected, 2 = connecting, 3 = disconnecting
+    const state = mongoose.connection.readyState;
+    const states = ['disconnected', 'connected', 'connecting', 'disconnecting'];
+    res.json({
+      ok: state === 1,
+      mongooseStateCode: state,
+      mongooseStateText: states[state] || 'unknown',
+      dbName: mongoose.connection.name || null,
+      host: mongoose.connection.host || null
+    });
+  } catch (err) {
+    res.status(500).json({ ok: false, error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 4000;
 
 async function start() {
